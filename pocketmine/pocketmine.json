@@ -1,33 +1,19 @@
 {
   "pufferd": {
-    "type": "pocketmine",
-    "display": "GenisysPro",
+    "type": "minecraft-bedrock",
+    "display": "PocketMine-MP",
     "install": {
       "commands": [
         {
           "type": "download",
-          "files": "https://github.com/GenisysPro/GenisysPro/archive/master.zip"
+          "files": "https://raw.githubusercontent.com/pmmp/php-build-scripts/master/installer.sh"
         },
         {
           "commands": [
-            "unzip GenisysPro-master"
+            "chmod +x ./installer.sh",
+            "./installer.sh"
           ],
           "type": "command"
-        },
-        {
-          "files": "https://bintray.com/pocketmine/PocketMine/download_file?file_path=PHP_7.0.6_x86-64_Linux.tar.gz",
-          "type": "download"
-        },
-        {
-          "commands": [
-            "tar -zxf PHP_7.0.6_x86-64_Linux.tar.gz"
-          ],
-          "type": "command"
-        },
-        {
-          "source": "bin",
-          "target": "GenisysPro-master",
-          "type": "move"
         },
         {
           "type": "writefile",
@@ -43,7 +29,7 @@
       "arguments": [
         "--no-wizard"
       ],
-      "program": "GenisysPro-master/start.sh"
+      "program": "./start.sh"
     },
     "environment": {
       "type": "tty"
@@ -61,7 +47,8 @@
         "required": true,
         "desc": "What port to bind the server to",
         "display": "Port",
-        "internal": false
+        "internal": false,
+        "type": "integer"
       }
     }
   }

@@ -21,7 +21,7 @@
     "run": {
       "pre": [],
       "post": [],
-      "stop": "exit",
+      "stopCode": 2,
       "arguments": [
         "start",
         "src/index.js"

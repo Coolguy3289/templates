@@ -25,7 +25,8 @@
       "pre": [],
       "post": [],
       "arguments": [
-        "TheIsland?listen?SessionName=${sessionname}?ServerAdminPassword=${serveradminpassword}?MultiHome=${ip}?Port=${port}?QueryPort=${queryport}?MaxPlayers=${maxplayers}",
+        "-exclusivejoin",
+        "${mapname}?listen?SessionName=${sessionname}?ServerAdminPassword=${serveradminpassword}?MultiHome=${ip}?Port=${port}?QueryPort=${queryport}?MaxPlayers=${maxplayers}",
         "-server",
         "-log"
       ],
@@ -76,7 +77,13 @@
         "desc": "Maximum number of players",
         "display": "Max Players",
         "internal": false
+      },
+      "mapname": {
+        "desc": "Name of the map",
+        "display": "Map Name",
+        "internal": false,
+        "required": true,
+        "value": "TheIsland"
       }
     }
   }
-}
