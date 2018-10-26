@@ -1,0 +1,112 @@
+{
+  "pufferd":
+  {
+    "type": "Unity",
+    "display": "Unturned",
+    "install":
+    {
+      "commands":
+      [
+        {
+          "files": "https://ci.rocketmod.net/job/Rocket.Unturned/lastSuccessfulBuild/artifact/Rocket.Unturned/bin/Release/Rocket.zip",
+          "type": "download"
+        },
+        {
+          "commands":
+          [
+            "unzip -o Rocket.zip",
+            "rm Rocket.zip",
+            "cp Scripts/Linux/RocketLauncher.exe RocketLauncher.exe",
+            "chmod +x Scripts/Linux/update.sh",
+            "chmod +x Scripts/Linux/start.sh",
+            "Scripts/update.sh ${steam_user} ${steam_pass}"
+          ],
+          "type": "command"
+        },
+        {
+          "type": "writefile",
+          "text": "Name ${name}\nMap ${map}\nPort ${port}\nMaxPlayers ${maxplayers}\nMode ${mode}\nOwner ${steam_id}\nWelcome ${welcome}",
+          "target": "/Servers/SV1/Server/Commands.dat"
+        }
+      ]
+    },
+    "run": {
+      "stopCode": 2,
+      "pre": [],
+      "post": [],
+      "arguments": [
+        "SV1"
+      ],
+      "program": "Scripts/Linux/start.sh"
+    },
+    "environment": {
+      "type": "tty"
+    },
+    "data":
+    {
+      "steam_user": {
+        "value": "",
+        "required": true,
+        "desc": "Steam Login for downloading Unturned",
+        "display": "STEAM USER",
+        "internal": false
+      },
+      "steam_pass": {
+        "value": "",
+        "required": true,
+        "desc": "Steam Pass for downloading Unturned",
+        "display": "STEAM PASSWORD",
+        "internal": false
+      },
+      "name": {
+        "value": "An Unturned Server by PufferPanel",
+        "required": true,
+        "desc": "Server name.",
+        "display": "Name",
+        "internal": false
+      },
+      "welcome": {
+        "value": "Welcome to the default server!",
+        "required": false,
+        "desc": "The MOTD of the Server",
+        "display": "Server welcome message.",
+        "internal": false
+      },
+      "maxplayers": {
+        "value": "8",
+        "required": true,
+        "desc": "Slots",
+        "display": "Server slots.",
+        "internal": false
+      },
+      "map": {
+        "value": "PEI",
+        "required": true,
+        "desc": "Server map.",
+        "display": "Map",
+        "internal": false
+      },
+      "mode": {
+        "value": "easy",
+        "required": true,
+        "desc": "Server difficulty mode.",
+        "display": "Mode",
+        "internal": false
+      },
+      "port": {
+        "value": "27015",
+        "required": true,
+        "desc": "Server port.",
+        "display": "Port",
+        "internal": false
+      },
+      "steam_id": {
+        "value": "",
+        "required": true,
+        "desc": "Server owner STEAMID_64",
+        "display": "STEAMID_64",
+        "internal": false
+      }
+    }
+  }
+}
